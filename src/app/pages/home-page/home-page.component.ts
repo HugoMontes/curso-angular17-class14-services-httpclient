@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ProductsApiService } from './../../services/products-api.service';
+import { Component, inject, Optional } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -16,4 +17,5 @@ import { ProductComponent } from './product/product.component';
 })
 export class HomePageComponent {
 	count = 0;
+	private readonly _productsApiService = inject(ProductsApiService);
 }
