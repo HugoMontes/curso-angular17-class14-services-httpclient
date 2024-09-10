@@ -16,10 +16,9 @@
 		<mat-drawer-content class="drawer-container__content">
 			<h1>Lista de productos</h1>
 			<div class="products">
-				<app-product />
-				<app-product />
-				<app-product />
-				<app-product />
+				@for(product of products; track product.id){
+					<app-product [product]="product" />
+				}
 			</div>
 		</mat-drawer-content>
 	</mat-drawer-container>

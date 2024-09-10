@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { ProductComponent } from './product/product.component';
+import { IApiResponseProduct } from '../../services/models/product-api.interface';
 
 @Component({
 	selector: 'app-home-page',
@@ -19,8 +20,10 @@ export class HomePageComponent implements OnInit {
 
 	count = 0;
 	private readonly _productsApiService = inject(ProductsApiService);
+	products: IApiResponseProduct[] = [];
 
 	ngOnInit(): void {
-		this._productsApiService.getProducts().subscribe((data) => console.log(data));
+		// this._productsApiService.getProducts().subscribe((data) => console.log(data));
+		this._productsApiService.getProducts().subscribe((data) => this.products = data);
 	}
 }
