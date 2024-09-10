@@ -1,5 +1,5 @@
 import { ProductsApiService } from './../../services/products-api.service';
-import { Component, inject, Optional } from '@angular/core';
+import { Component, inject, OnInit, Optional } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -15,7 +15,12 @@ import { ProductComponent } from './product/product.component';
 	templateUrl: './home-page.component.html',
 	styleUrl: './home-page.component.scss'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
+
 	count = 0;
 	private readonly _productsApiService = inject(ProductsApiService);
+
+	ngOnInit(): void {
+		this._productsApiService.getProducts().subscribe((data) => console.log(data));
+	}
 }
