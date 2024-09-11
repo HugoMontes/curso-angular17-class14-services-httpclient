@@ -9,6 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { IApiResponseProduct } from '../../services/models/product-api.interface';
 import { CartService } from '../../services/cart.service';
 import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-home-page',
@@ -26,15 +27,21 @@ export class HomePageComponent implements OnInit {
 	readonly cartService = inject(CartService);
 
 	products: IApiResponseProduct[] = [];
+	products$!: Observable<IApiResponseProduct[]>;
 
 	ngOnInit(): void {
 		// this._productsApiService.getProducts().subscribe((data) => console.log(data));
-		this._productsApiService.getProducts().subscribe((data) => this.products = data);
-
+		// this._productsApiService.getProducts().subscribe((data) => this.products = data);
+		this._getApis()
+		
 		// this._cartService.cartObservable$.subscribe({
 		// 	next: (number) => {
 		// 		this.count = number;
 		// 	}
 		// });
+	}
+
+	private _getApis() {
+		this.products$ = this._productsApiService.getProducts();
 	}
 }
