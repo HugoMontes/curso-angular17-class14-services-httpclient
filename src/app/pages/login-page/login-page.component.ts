@@ -2,15 +2,18 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-	selector: 'app-login-page',
-	templateUrl: './login-page.component.html',
-	styleUrls: ['./login-page.component.scss']
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
 	
-	private readonly _router = inject(Router);
+  private readonly _router = inject(Router);
 
-	clickSingUp(): void {
-		this._router.navigateByUrl('/home');
-	}
+  clickSingUp(): void {
+    // this._router.navigateByUrl('/home');
+    this._router.navigate(['/home'], {
+      queryParams: { user: 'juan', edad: 20 },
+    });
+  }
 }
