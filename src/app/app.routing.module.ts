@@ -14,7 +14,7 @@ const routes: Routes = [
     component: LoginPageComponent,
   },
   {
-    path: 'payment',
+    path: 'payment/:user',
     component: PaymentPageComponent,
     children: [
       {
