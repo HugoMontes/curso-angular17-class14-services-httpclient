@@ -6,6 +6,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
 import { SimpleProductDetailPageComponent } from './pages/payment-page/simple-product-detail-page/simple-product-detail-page.component';
 import FullProductDetailsPageComponent from './pages/payment-page/full-product-details-page/full-product-details-page.component';
+import { ProductsResolverService } from './services/products.resolver';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'payment/:user',
     component: PaymentPageComponent,
     data: { title: 'Pagos' },
+    resolve: { products: ProductsResolverService },
     children: [
       {
         path: 'simple-product-detail', // http://localhost:4200/payment/simple-product-detail
