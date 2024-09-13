@@ -11,12 +11,12 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 	styleUrl: './payment-page.component.scss'
 })
 export class PaymentPageComponent implements OnInit {
+
 	private readonly _activatedRoute = inject(ActivatedRoute);
 	private readonly _router = inject(Router);
 
 	ngOnInit(): void {
 		console.log('Datos enviados por Params ==> ', this._activatedRoute.snapshot.params);
-		console.log('Datos enviados por Data property ==> ', this._activatedRoute.snapshot.data);
 	}
 
 	clickViewFullDetail(): void {
