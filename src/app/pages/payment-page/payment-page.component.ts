@@ -17,6 +17,7 @@ export class PaymentPageComponent implements OnInit {
 
 	ngOnInit(): void {
 		console.log('Datos enviados por Params ==> ', this._activatedRoute.snapshot.params);
+		console.log('Datos enviados por Data Property ==> ', this._activatedRoute.snapshot.data);
 	}
 
 	clickViewFullDetail(): void {

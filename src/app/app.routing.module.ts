@@ -16,6 +16,7 @@ const routes: Routes = [
   {
     path: 'payment/:user',
     component: PaymentPageComponent,
+    data: { title: 'Pagos' },
     children: [
       {
         path: 'simple-product-detail', // http://localhost:4200/payment/simple-product-detail
