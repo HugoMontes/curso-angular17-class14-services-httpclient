@@ -11,9 +11,10 @@ export class LoginPageComponent {
   private readonly _router = inject(Router);
 
   clickSingUp(): void {
-    // this._router.navigateByUrl('/home');
+    // this._router.navigateByUrl('/home', {state: {isAdmin: true } });
     this._router.navigate(['/home'], {
       queryParams: { user: 'juan', edad: 20 },
+      state: { isAdmin: true },
     });
   }
 }

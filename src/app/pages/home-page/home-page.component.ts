@@ -10,7 +10,7 @@ import { IApiResponseProduct } from '../../services/models/product-api.interface
 import { CartService } from '../../services/cart.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -36,9 +36,14 @@ export class HomePageComponent implements OnInit {
   // private readonly _cartService = inject(CartService);
   readonly cartService = inject(CartService);
   private readonly _activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
 
   products: IApiResponseProduct[] = [];
   products$!: Observable<IApiResponseProduct[]>;
+
+  constructor() {
+    console.log('Valores obtenidos por STATE ==> ', this._router.getCurrentNavigation()?.extras.state);
+  }
 
   ngOnInit(): void {
     // this._productsApiService.getProducts().subscribe((data) => console.log(data));
@@ -48,10 +53,9 @@ export class HomePageComponent implements OnInit {
   }
 
   private _getValueRoutes() {
-    console.log(
-      'Valores obtenidos por QueryParam ==>',
-      this._activatedRoute.snapshot.queryParams
-    );
+    console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParams);
+    console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParamMap.get('edad'));
+    console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParams['edad']);
   }
 
   private _getApis() {
