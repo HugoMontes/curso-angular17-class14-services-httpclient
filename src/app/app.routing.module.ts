@@ -9,9 +9,10 @@ import FullProductDetailsPageComponent from './pages/payment-page/full-product-d
 import { ProductsResolverService } from './services/products.resolver';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent },
+  { path: 'home', title: 'Home', component: HomePageComponent },
   {
     path: 'login',
+    title: 'Inicio de sesión',
     component: LoginPageComponent,
   },
   {
@@ -31,8 +32,8 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'simple-product-detail'
-      }
+        redirectTo: 'simple-product-detail',
+      },
     ],
   },
 
@@ -45,7 +46,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule],
   providers: [],
 })

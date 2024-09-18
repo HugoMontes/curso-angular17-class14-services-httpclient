@@ -13,6 +13,7 @@ export class ProductsResolverService implements Resolve<IApiResponseProduct[]> {
 
 	resolve(route: ActivatedRouteSnapshot): Observable<IApiResponseProduct[]> {
 		console.log('Productos desde el resolver...', route);
-		return this._productsApiService.getProducts().pipe(delay(3000));
+		// return this._productsApiService.getProducts().pipe(delay(3000));
+		return this._productsApiService.getProducts().pipe();
 	}
 }

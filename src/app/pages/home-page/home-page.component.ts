@@ -1,5 +1,5 @@
 import { ProductsApiService } from './../../services/products-api.service';
-import { Component, inject, OnInit, Optional } from '@angular/core';
+import { Component, inject, Input, OnInit, Optional } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -31,7 +31,8 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 	
-  count = 0;
+  @Input() user?: string;
+
   private readonly _productsApiService = inject(ProductsApiService);
   // private readonly _cartService = inject(CartService);
   readonly cartService = inject(CartService);
@@ -40,6 +41,7 @@ export class HomePageComponent implements OnInit {
 
   products: IApiResponseProduct[] = [];
   products$!: Observable<IApiResponseProduct[]>;
+  count = 0;
 
   constructor() {
     console.log('Valores obtenidos por STATE ==> ', this._router.getCurrentNavigation()?.extras.state);
@@ -56,6 +58,8 @@ export class HomePageComponent implements OnInit {
     console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParams);
     console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParamMap.get('edad'));
     console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParams['edad']);
+
+    console.log('@Input ==>', this.user);
   }
 
   private _getApis() {
