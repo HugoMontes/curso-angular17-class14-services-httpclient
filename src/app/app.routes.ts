@@ -9,11 +9,12 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 
 export default [
   { path: 'home', title: 'Home', component: HomePageComponent },
-  // {
-  //   path: 'login',
-  //   title: 'Inicio de sesión',
-  //   component: LoginPageComponent,
-  // },
+  {
+    path: 'login',
+    title: 'Inicio de sesión',
+    // component: LoginPageComponent,
+    loadChildren: () => import('./pages/login-page/login-page.module').then((m) => m.LoginPageModule)
+  },
   // {
   //   path: 'payment/:user',
   //   component: PaymentPageComponent,
