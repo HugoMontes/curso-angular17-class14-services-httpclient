@@ -11,6 +11,7 @@ import { CartService } from '../../services/cart.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { DemoService } from '../../services/demo.service';
 
 @Component({
   selector: 'app-home-page',
@@ -38,6 +39,7 @@ export class HomePageComponent implements OnInit {
   readonly cartService = inject(CartService);
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
+  private readonly _demoService = inject(DemoService);
 
   products: IApiResponseProduct[] = [];
   products$!: Observable<IApiResponseProduct[]>;
