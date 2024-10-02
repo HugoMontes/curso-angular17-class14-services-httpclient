@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,5 +14,20 @@ import { MatInput } from '@angular/material/input';
 	styleUrl: './register-page.component.scss'
 })
 export default class RegisterPageComponent {
-	clickRegister(): void{}
+	
+	// formGroup = new FormGroup({
+	// 	names: new FormControl('')
+	// });
+
+	private readonly _formBuilder = inject(FormBuilder);
+
+	formGroup = this._formBuilder.nonNullable.group({
+		names: ''
+	});
+
+	clickRegister(): void{
+		// console.log(this.formGroup.get('names')?.value as String);
+		const name = this.formGroup.controls.names.value;
+		console.log(name);
+	}
 }
