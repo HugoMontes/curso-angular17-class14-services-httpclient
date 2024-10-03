@@ -28,6 +28,8 @@ export default class RegisterPageComponent {
 		names: ['', Validators.required],
 		lastName: ['', Validators.required],
 		email: ['', [Validators.required, Validators.email]],
+		password: ['', Validators.required],
+		confirmPassword: ['', Validators.required]
 	});
 
 	clickRegister(): void{
@@ -40,5 +42,30 @@ export default class RegisterPageComponent {
 		if(this.formGroup.valid){
 			console.log("Los datos del formulario son correctos.");
 		}
+
+		console.log("Propiedad errors email => ", this.formGroup.controls.email.errors);
+		console.log("Funcion hasError() en email => ", this.formGroup.controls.email.hasError('email'));
 	}
+
+	//#region getter and setters
+	get namesField(): FormControl<string> {
+		return this.formGroup.controls.names;
+	}
+	
+	get lastNameField(): FormControl<string> {
+		return this.formGroup.controls.lastName;
+	}
+	
+	get emailField(): FormControl<string> {
+		return this.formGroup.controls.email;
+	}
+	
+	get passwordField(): FormControl<string> {
+		return this.formGroup.controls.password;
+	}
+	
+	get confirmPasswordField(): FormControl<string> {
+		return this.formGroup.controls.confirmPassword;
+	}
+	//#endregion
 }
