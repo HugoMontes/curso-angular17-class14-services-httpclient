@@ -34,5 +34,11 @@ export default class RegisterPageComponent {
 		// console.log(this.formGroup.get('names')?.value as String);
 		const name = this.formGroup.controls.names.value;
 		console.log(name);
+		console.log("Estado validacion names => ", this.formGroup.controls.names.valid);
+		console.log("Estado validacion form => ", this.formGroup.valid);
+
+		if(this.formGroup.valid){
+			console.log("Los datos del formulario son correctos.");
+		}
 	}
 }
