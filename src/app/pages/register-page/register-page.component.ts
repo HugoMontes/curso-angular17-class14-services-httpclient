@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { last } from 'rxjs';
+import { customPasswordValidator } from './register-custom-validators';
 
 @Component({
 	selector: 'app-register-page',
@@ -28,7 +29,7 @@ export default class RegisterPageComponent {
 		names: ['', Validators.required],
 		lastName: ['', Validators.required],
 		email: ['', [Validators.required, Validators.email]],
-		password: ['', Validators.required],
+		password: ['', [customPasswordValidator, Validators.required]],
 		confirmPassword: ['', Validators.required]
 	});
 
@@ -45,6 +46,7 @@ export default class RegisterPageComponent {
 
 		console.log("Propiedad errors email => ", this.formGroup.controls.email.errors);
 		console.log("Funcion hasError() en email => ", this.formGroup.controls.email.hasError('email'));
+		console.log("Validador personalizado password => ", this.passwordField.errors);		
 	}
 
 	//#region getter and setters
