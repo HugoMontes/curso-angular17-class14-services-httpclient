@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { last } from 'rxjs';
-import { customPasswordValidator } from './register-custom-validators';
+import { crossPasswordMatchingValidatior, customPasswordValidator, PasswordStateMatcher } from './register-custom-validators';
 
 @Component({
 	selector: 'app-register-page',
@@ -23,6 +23,8 @@ export default class RegisterPageComponent {
 	// 	email: new FormControl('', {validators: [Validators.required, Validators.email]}),
 	// });
 
+	passwordStateMatcher = new PasswordStateMatcher();
+
 	private readonly _formBuilder = inject(FormBuilder);
 
 	formGroup = this._formBuilder.nonNullable.group({
@@ -31,9 +33,54 @@ export default class RegisterPageComponent {
 		email: ['', [Validators.required, Validators.email]],
 		password: ['', [customPasswordValidator, Validators.required]],
 		confirmPassword: ['', Validators.required]
-	});
+	}, {validators: crossPasswordMatchingValidatior});
 
 	clickRegister(): void{
+		// Acceder al valor de un control
+		const namesOld = this.formGroup.get('names')?.value;
+		const namesNew = this.formGroup.controls.names.value;
+		console.log(namesNew);
+
+		//#region Estados de validacion
+		// Acceder al estado de validación de un control
+		const nameIsValid = this.formGroup.controls.names.valid;
+		console.log(nameIsValid);
+
+		// Acceder al estado de validación de todo el formulario
+		const formGroupIsValid = this.formGroup.valid;
+		console.log(formGroupIsValid);
+		//#endregion
+
+		//#region Estados de interacción
+		// Acceder al estado de interacción de un control
+		const nameIsDirty = this.formGroup.controls.names.dirty;
+		console.log(nameIsDirty);
+
+		// Acceder al estado de validación de todo el formulario
+		const formGroupIsDirty = this.formGroup.dirty;
+		console.log(formGroupIsDirty);
+		//#endregion
+
+		//#region ERRORS
+		// Acceder a los errores de un control
+		const nameErrors = this.formGroup.controls.names.errors;
+		console.log(nameErrors);
+
+		// Acceder al estado de validación de todo el formulario
+		const formGroupErrors = this.formGroup.errors;
+		console.log(formGroupErrors);
+
+		// verificar si un control incumplió una validacion
+
+		console.log(this.formGroup.controls.names.hasError('required'));
+
+		//#endregion
+
+		if (this.formGroup.valid) {
+			const user = this.formGroup.getRawValue();
+		}
+
+
 		// console.log(this.formGroup.get('names')?.value as String);
 		const name = this.formGroup.controls.names.value;
 		console.log(name);
