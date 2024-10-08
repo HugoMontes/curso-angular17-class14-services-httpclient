@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
@@ -19,11 +20,16 @@ const PRODUCTS: ICartProduct[] = [
 @Component({
 	selector: 'app-simple-product-detail-page',
 	standalone: true,
-	imports: [MatTableModule, MatInputModule, MatFormFieldModule],
+	imports: [MatTableModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule],
 	templateUrl: './simple-product-detail-page.component.html',
 	styleUrl: './simple-product-detail-page.component.scss'
 })
 export class SimpleProductDetailPageComponent {
 	displayedColumns: string[] = ['name', 'price', 'quantity', 'total', 'action'];
 	dataSource = PRODUCTS;
+	private readonly formBuilder = inject(FormBuilder);
+
+	form = this.formBuilder.group({
+		products: this.formBuilder.array([])
+	});	
 }
