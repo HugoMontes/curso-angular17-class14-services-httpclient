@@ -30,6 +30,16 @@ export class SimpleProductDetailPageComponent {
 	private readonly formBuilder = inject(FormBuilder);
 
 	form = this.formBuilder.group({
-		products: this.formBuilder.array([])
+		total: PRODUCTS.reduce((prev, current) => prev + current.total, 0),
+		products: this.formBuilder.array(PRODUCTS.map((item) =>this._createFormGroup(item))),
 	});	
+
+	private _createFormGroup(item: ICartProduct) {
+		return this.formBuilder.group({
+			name: item.name,
+			price: item.price,
+			quantity: item.quantity,
+			total: item.total
+		});
+	}
 }
