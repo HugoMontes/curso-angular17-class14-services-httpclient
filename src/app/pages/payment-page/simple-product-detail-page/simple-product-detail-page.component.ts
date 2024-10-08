@@ -1,34 +1,29 @@
 import { Component } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 
-export interface PeriodicElement {
+interface ICartProduct {
 	name: string;
-	position: number;
-	weight: number;
-	symbol: string;
+	price: number;
+	quantity: number;
+	total: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-	{ position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-	{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-	{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-	{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-	{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-	{ position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-	{ position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-	{ position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-	{ position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-	{ position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
+const PRODUCTS: ICartProduct[] = [
+	{ name: 'Mens Casual Slim Fit', price: 109.95, quantity: 2, total: 219.9 },
+	{ name: "ohn Hardy Women's Legends Naga Gold & Silver Dragon", price: 695, quantity: 1, total: 695 },
+	{ name: 'ierced Owl Rose Gold Plated Stainless Steel Double', price: 10.99, quantity: 1, total: 10.99 }
 ];
 
 @Component({
 	selector: 'app-simple-product-detail-page',
 	standalone: true,
-	imports: [MatTableModule],
+	imports: [MatTableModule, MatInputModule, MatFormFieldModule],
 	templateUrl: './simple-product-detail-page.component.html',
 	styleUrl: './simple-product-detail-page.component.scss'
 })
 export class SimpleProductDetailPageComponent {
-	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-	dataSource = ELEMENT_DATA;
+	displayedColumns: string[] = ['name', 'price', 'quantity', 'total', 'action'];
+	dataSource = PRODUCTS;
 }
