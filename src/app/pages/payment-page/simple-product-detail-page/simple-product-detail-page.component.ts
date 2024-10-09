@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
@@ -20,7 +22,7 @@ const PRODUCTS: ICartProduct[] = [
 @Component({
 	selector: 'app-simple-product-detail-page',
 	standalone: true,
-	imports: [MatTableModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule],
+	imports: [MatTableModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatIconModule, MatButtonModule],
 	templateUrl: './simple-product-detail-page.component.html',
 	styleUrl: './simple-product-detail-page.component.scss'
 })
@@ -70,5 +72,13 @@ export class SimpleProductDetailPageComponent implements OnInit {
 	getValue(key: string, form: FormGroup) {
 		console.log("NO SE RECOMIENDA....");
 		return form.get(key)?.value;		
+	}
+
+	clickDelete(index: number) {
+		// Remover el elemento
+		this.productsFormArray.removeAt(index);
+		// console.log(this.productsFormArray.controls);		
+		// Actualizar el origen de datos
+		this.dataSource.data = this.productsFormArray.controls;
 	}
 }
