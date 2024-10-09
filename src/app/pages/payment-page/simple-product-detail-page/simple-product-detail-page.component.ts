@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { debounceTime } from 'rxjs';
 
 interface ICartProduct {
 	name: string;
@@ -51,7 +52,7 @@ export class SimpleProductDetailPageComponent implements OnInit {
 
 	private _calculate_row_total() {
 		this.productsFormArray.controls.forEach(({controls: {quantity, price, total}}) => {
-			quantity.valueChanges.subscribe((value) => {
+			quantity.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
 				// console.log(value);
 				console.log("---- CAMBIO EN CANTIDAD....");
 				const priceValue = price.value!;
@@ -79,6 +80,7 @@ export class SimpleProductDetailPageComponent implements OnInit {
 		this.productsFormArray.removeAt(index);
 		// console.log(this.productsFormArray.controls);		
 		// Actualizar el origen de datos
-		this.dataSource.data = this.productsFormArray.controls;
+		// this.dataSource.data = this.productsFormArray.controls;
+		this.dataSource._updateChangeSubscription();
 	}
 }
