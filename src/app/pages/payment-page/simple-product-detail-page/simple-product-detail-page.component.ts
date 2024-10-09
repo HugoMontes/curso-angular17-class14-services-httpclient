@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -64,5 +64,11 @@ export class SimpleProductDetailPageComponent implements OnInit {
 
 	get productsFormArray() {
 		return this.form.controls.products;
+	}
+
+	// NO SE RECOMIENDA
+	getValue(key: string, form: FormGroup) {
+		console.log("NO SE RECOMIENDA....");
+		return form.get(key)?.value;		
 	}
 }
