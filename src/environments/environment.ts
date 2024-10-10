@@ -1,3 +1,2 @@
-export const environment = {
-    domain: 'https://fakestoreapi.com'
-};
+import { commonEnvironment } from './environment.common';
+export const environment = { ...commonEnvironment };
