@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,8 @@ import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RoutingModule } from './app.routing.module';
+import { ApiInterceptor } from './interceptors/api.interceptor';
+import { DemoInterceptor } from './interceptors/demo.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NotFoundPageComponent],
@@ -36,6 +38,9 @@ import { RoutingModule } from './app.routing.module';
     RoutingModule,
   ],
   bootstrap: [AppComponent],
-  providers: [provideAnimationsAsync()],
+  providers: [provideAnimationsAsync(), 
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: DemoInterceptor, multi: true },
+  ],
 })
 export class AppModule {}
