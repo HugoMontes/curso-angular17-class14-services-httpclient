@@ -27,8 +27,11 @@ export class LoginPageComponent {
     //   queryParams: { user: 'juan', edad: 20 },
     //   state: { isAdmin: true },
     // });
-    this._authApiService.login(this.form.getRawValue()).subscribe((response) => {
-			localStorage.setItem('token', response.token);
-		});
+    this._authApiService.login(this.form.getRawValue()).subscribe({
+      next: (response) => {
+			  localStorage.setItem('token', response.token);
+		  },
+      error: (err) => console.log('ERROR CONTROLADO DESDE EL COMPONENTE...', err)
+    });
   }
 }
