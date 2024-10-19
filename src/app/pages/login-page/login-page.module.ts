@@ -8,6 +8,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { DemoService } from '../../services/demo.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [{ path: '', component: LoginPageComponent }];
 
@@ -20,6 +21,7 @@ const routes: Routes = [{ path: '', component: LoginPageComponent }];
     MatFormFieldModule,
     MatIcon,
     MatButton,
+    ReactiveFormsModule
   ],
   providers: [DemoService]
 })
