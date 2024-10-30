@@ -13,6 +13,7 @@ import { AuthApiService } from '../../services/api/auth-api.service';
 export class LoginPageComponent {
   // private readonly _router = inject(Router);
   // private readonly _demoService = inject(DemoService);
+  private readonly _router = inject(Router);
   private readonly _formBuilder = inject(NonNullableFormBuilder);
   private readonly _authApiService = inject(AuthApiService);
 
@@ -30,6 +31,8 @@ export class LoginPageComponent {
     this._authApiService.login(this.form.getRawValue()).subscribe({
       next: (response) => {
 			  localStorage.setItem('token', response.token);
+			  localStorage.setItem('role', 'admin');
+        this._router.navigateByUrl('/');
 		  },
       error: (err) => console.log('ERROR CONTROLADO DESDE EL COMPONENTE...', err)
     });

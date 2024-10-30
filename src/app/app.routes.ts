@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ProductsResolverServiceFn } from './services/products.resolver';
+import { AuthGuard } from './guards/auth.guard';
 
 export default [
   { path: 'home', title: 'Home', component: HomePageComponent },
@@ -19,6 +20,7 @@ export default [
   {
     path: 'payment/:user',
     data: { title: 'Pagos' },
+    canActivate: [AuthGuard],
     resolve: { products: ProductsResolverServiceFn },
     loadChildren: () => import('./pages/payment-page/payment-page.routes'),
   },
