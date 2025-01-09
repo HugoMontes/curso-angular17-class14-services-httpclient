@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -5,17 +6,23 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { last } from 'rxjs';
+import { last, Observable } from 'rxjs';
 import { crossPasswordMatchingValidatior, customPasswordValidator, PasswordStateMatcher } from './register-custom-validators';
+import { CanComponentDeactive } from '../../guards/exit.guard';
 
 @Component({
 	selector: 'app-register-page',
 	standalone: true,
-	imports: [MatCardModule, MatInput, MatFormFieldModule, MatIcon, MatButton, ReactiveFormsModule],
+	imports: [RouterLink, MatCardModule, MatInput, MatFormFieldModule, MatIcon, MatButton, ReactiveFormsModule],
 	templateUrl: './register-page.component.html',
 	styleUrl: './register-page.component.scss'
 })
-export default class RegisterPageComponent {
+export default class RegisterPageComponent implements CanComponentDeactive {
+	
+	CanDeactivate() : Observable<boolean> | Promise<boolean> | boolean {
+		console.log('*** CanDeactive REGISTERPAGE ****');
+		return true;
+	}
 	
 	// formGroup = new FormGroup({
 	// 	names: new FormControl('', {validators: Validators.required}),
