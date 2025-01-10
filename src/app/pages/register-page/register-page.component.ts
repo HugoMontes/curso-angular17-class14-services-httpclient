@@ -21,16 +21,22 @@ import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-
 })
 export default class RegisterPageComponent implements CanComponentDeactive {
 
-	dialog = inject(MatDialog);
+	// dialog = inject(MatDialog);
 	
+	// CanDeactivate() : Observable<boolean> | Promise<boolean> | boolean {
+	// 	console.log('*** CanDeactive REGISTERPAGE ****');
+	// 	const formularioValido = Object.values(this.formGroup.controls).some((control) => control.value !== '');
+	// 	if (formularioValido) {
+	// 		const reference = this.dialog.open(ConfirmDialogComponent);
+	// 		return reference.afterClosed();
+	// 	}
+	// 	return true;
+	// }
+
 	CanDeactivate() : Observable<boolean> | Promise<boolean> | boolean {
 		console.log('*** CanDeactive REGISTERPAGE ****');
 		const formularioValido = Object.values(this.formGroup.controls).some((control) => control.value !== '');
-		if (formularioValido) {
-			const reference = this.dialog.open(ConfirmDialogComponent);
-			return reference.afterClosed();
-		}
-		return true;
+		return formularioValido;
 	}
 	
 	// formGroup = new FormGroup({
