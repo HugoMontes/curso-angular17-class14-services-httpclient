@@ -9,6 +9,8 @@ import { MatInput } from '@angular/material/input';
 import { last, Observable } from 'rxjs';
 import { crossPasswordMatchingValidatior, customPasswordValidator, PasswordStateMatcher } from './register-custom-validators';
 import { CanComponentDeactive } from '../../guards/exit.guard';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
 	selector: 'app-register-page',
@@ -18,9 +20,16 @@ import { CanComponentDeactive } from '../../guards/exit.guard';
 	styleUrl: './register-page.component.scss'
 })
 export default class RegisterPageComponent implements CanComponentDeactive {
+
+	dialog = inject(MatDialog);
 	
 	CanDeactivate() : Observable<boolean> | Promise<boolean> | boolean {
 		console.log('*** CanDeactive REGISTERPAGE ****');
+		const formularioValido = Object.values(this.formGroup.controls).some((control) => control.value !== '');
+		if (formularioValido) {
+			const reference = this.dialog.open(ConfirmDialogComponent);
+			return reference.afterClosed();
+		}
 		return true;
 	}
 	
