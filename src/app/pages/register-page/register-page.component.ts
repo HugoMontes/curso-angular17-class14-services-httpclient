@@ -1,5 +1,5 @@
 import { RouterLink } from '@angular/router';
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,6 +20,15 @@ import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-
 	styleUrl: './register-page.component.scss'
 })
 export default class RegisterPageComponent implements CanComponentDeactive {
+
+	@HostListener('window:beforeunload', ['$event'])
+	onBeforeReload(e: BeforeUnloadEvent) {
+		const form_valid = Object.values(this.formGroup.controls).some((control) => control.value !== '');
+		if (form_valid) {
+			e.preventDefault();
+		}
+		return;
+	}
 
 	// dialog = inject(MatDialog);
 	
