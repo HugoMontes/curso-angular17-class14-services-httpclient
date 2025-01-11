@@ -3,7 +3,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ProductsResolverServiceFn } from './services/products.resolver';
 import { AuthGuardFn } from './guards/auth.guard';
-import { ExitGuard } from './guards/exit.guard';
+import { ExitGuardFn } from './guards/exit.guard';
 
 export default [
   { path: 'home', title: 'Home', component: HomePageComponent },
@@ -16,7 +16,7 @@ export default [
   {
 		path: 'register',
 		title: 'Registro',
-    canDeactivate: [ExitGuard],
+    canDeactivate: [ExitGuardFn],
 		loadComponent: () => import('./pages/register-page/register-page.component')
 	},
   {
