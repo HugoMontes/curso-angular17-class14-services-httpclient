@@ -27,6 +27,12 @@ export default [
     loadChildren: () => import('./pages/payment-page/payment-page.routes'),
   },
 
+  {
+    path: 'user',
+    title: 'Usuario',
+    loadChildren: () => import('./pages/user/user.routes')
+  },
+
   //SE RECOMIENDA PONER A FINAL DE LAS RUTAS EL USO DE COMODINES
   // { path: '404', component: NotFoundPageComponent },
   // { path: '**', redirectTo: '/404', pathMatch: 'full' },
