@@ -11,14 +11,18 @@ export default [
     path: 'login',
     title: 'Inicio de sesión',
     // component: LoginPageComponent,
-    loadChildren: () => import('./pages/login-page/login-page.module').then((m) => m.LoginPageModule)
+    loadChildren: () =>
+      import('./pages/login-page/login-page.module').then(
+        (m) => m.LoginPageModule,
+      ),
   },
   {
-		path: 'register',
-		title: 'Registro',
+    path: 'register',
+    title: 'Registro',
     canDeactivate: [ExitGuardFn],
-		loadComponent: () => import('./pages/register-page/register-page.component')
-	},
+    loadComponent: () =>
+      import('./pages/register-page/register-page.component'),
+  },
   {
     path: 'payment/:user',
     data: { title: 'Pagos' },
@@ -30,7 +34,7 @@ export default [
   {
     path: 'user',
     title: 'Usuario',
-    loadChildren: () => import('./pages/user/user.routes')
+    loadChildren: () => import('./pages/user/user.routes'),
   },
 
   //SE RECOMIENDA PONER A FINAL DE LAS RUTAS EL USO DE COMODINES

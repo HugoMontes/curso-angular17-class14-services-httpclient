@@ -7,17 +7,28 @@
     <mat-card-content class="card-content" [formGroup]="form">
       <mat-form-field appearance="outline">
         <mat-label>Usuario</mat-label>
-        <input matInput placeholder="Ingrese su usuario" formControlName="username"/>
+        <input
+          matInput
+          placeholder="Ingrese su usuario"
+          formControlName="username"
+        />
         <mat-icon matSuffix>account_circle</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput type="password" placeholder="Ingrese su Contraseña" formControlName="password"/>
+        <input
+          matInput
+          type="password"
+          placeholder="Ingrese su Contraseña"
+          formControlName="password"
+        />
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="clickSingUp()">Iniciar sesión</button>
+      <button mat-raised-button color="primary" (click)="clickSingUp()">
+        Iniciar sesión
+      </button>
       <!-- <button
         mat-raised-button
         color="primary"
@@ -26,7 +37,6 @@
       >
         Iniciar sesión
       </button> -->
-
     </mat-card-content>
   </mat-card>
 </div>

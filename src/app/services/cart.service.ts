@@ -6,7 +6,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  
   private _productsDetail: IDetailProduct[] = [];
   private _count = 0;
 
@@ -15,7 +14,7 @@ export class CartService {
   addToCard(product: IProduct) {
     const idProduct = product.id;
     const index = this._productsDetail.findIndex(
-      ({ product }) => product.id === idProduct
+      ({ product }) => product.id === idProduct,
     );
 
     if (index === -1) {

@@ -1,18 +1,27 @@
 <ng-container [formGroup]="form">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" formArrayName="products">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    formArrayName="products"
+  >
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Producto</th>
-      <td mat-cell *matCellDef="let element">{{ element.controls.name.value }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.controls.name.value }}
+      </td>
       <!-- <td mat-cell *matCellDef="let element">{{ getValue('name', element) }}</td> -->
     </ng-container>
 
     <!-- Price Column -->
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Precio</th>
-      <td mat-cell *matCellDef="let element">{{ element.get('price').value }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.get("price").value }}
+      </td>
     </ng-container>
 
     <!-- Quantity Column -->
@@ -21,7 +30,7 @@
       <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i">
         <mat-form-field class="example-form-field">
           <mat-label>Cantidad</mat-label>
-          <input matInput type="number" formControlName="quantity"/>
+          <input matInput type="number" formControlName="quantity" />
         </mat-form-field>
       </td>
     </ng-container>
@@ -29,17 +38,19 @@
     <!-- Total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef>Total</th>
-      <td mat-cell *matCellDef="let element">{{ element.get('total').value }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.get("total").value }}
+      </td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element; let i = index">
-				<button mat-icon-button (click)="clickDelete(i)">
-					<mat-icon>delete</mat-icon>
-				</button>
-			</td>
+        <button mat-icon-button (click)="clickDelete(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

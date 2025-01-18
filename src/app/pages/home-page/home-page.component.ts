@@ -31,7 +31,6 @@ import { DemoService } from '../../services/demo.service';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent implements OnInit {
-	
   @Input() user?: string;
 
   private readonly _productsApiService = inject(ProductsApiService);
@@ -46,7 +45,10 @@ export class HomePageComponent implements OnInit {
   count = 0;
 
   constructor() {
-    console.log('Valores obtenidos por STATE ==> ', this._router.getCurrentNavigation()?.extras.state);
+    console.log(
+      'Valores obtenidos por STATE ==> ',
+      this._router.getCurrentNavigation()?.extras.state,
+    );
   }
 
   ngOnInit(): void {
@@ -57,16 +59,25 @@ export class HomePageComponent implements OnInit {
   }
 
   private _getValueRoutes() {
-    console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParams);
-    console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParamMap.get('edad'));
-    console.log('Valores obtenidos por QueryParam ==>', this._activatedRoute.snapshot.queryParams['edad']);
+    console.log(
+      'Valores obtenidos por QueryParam ==>',
+      this._activatedRoute.snapshot.queryParams,
+    );
+    console.log(
+      'Valores obtenidos por QueryParam ==>',
+      this._activatedRoute.snapshot.queryParamMap.get('edad'),
+    );
+    console.log(
+      'Valores obtenidos por QueryParam ==>',
+      this._activatedRoute.snapshot.queryParams['edad'],
+    );
 
     console.log('@Input ==>', this.user);
   }
 
   private _getApis() {
     this.products$ = this._productsApiService.getProducts();
-	// this._cartService.cartObservable$.subscribe({
+    // this._cartService.cartObservable$.subscribe({
     // 	next: (number) => {
     // 		this.count = number;
     // 	}

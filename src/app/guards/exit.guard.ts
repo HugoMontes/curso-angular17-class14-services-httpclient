@@ -11,7 +11,7 @@
 
 // @Injectable({ providedIn: 'root' })
 // export class ExitGuard implements CanDeactivate<CanComponentDeactive> {
-  
+
 //   dialog = inject(MatDialog);
 
 //   canDeactivate(
@@ -20,7 +20,7 @@
 //     currentState: RouterStateSnapshot,
 //     nextState: RouterStateSnapshot
 //   ): Observable<boolean> | Promise<boolean> | boolean {
-//     console.log('************** EXIT GUARD **********');    
+//     console.log('************** EXIT GUARD **********');
 //     // return component.CanDeactivate();
 //     const formularioValido = component.CanDeactivate();
 //     if (formularioValido) {
@@ -41,13 +41,15 @@ export interface CanComponentDeactive {
   CanDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
 }
 
-export const ExitGuardFn: CanDeactivateFn<CanComponentDeactive> = (component: CanComponentDeactive) => {
-	const formularioValido =  component.CanDeactivate();
+export const ExitGuardFn: CanDeactivateFn<CanComponentDeactive> = (
+  component: CanComponentDeactive,
+) => {
+  const formularioValido = component.CanDeactivate();
 
-	if (formularioValido) {
-		const dialog = inject(MatDialog);
-		const reference = dialog.open(ConfirmDialogComponent);
-		return reference.afterClosed();
-	}
-	return true;
+  if (formularioValido) {
+    const dialog = inject(MatDialog);
+    const reference = dialog.open(ConfirmDialogComponent);
+    return reference.afterClosed();
+  }
+  return true;
 };

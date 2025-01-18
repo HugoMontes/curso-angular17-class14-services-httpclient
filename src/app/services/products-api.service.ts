@@ -7,7 +7,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ProductsApiService {
-  
   httpClient = inject(HttpClient);
 
   private readonly URL_PRODUCTS = `${environment.domain}/products`;

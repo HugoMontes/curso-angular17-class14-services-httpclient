@@ -21,8 +21,8 @@ const routes: Routes = [{ path: '', component: LoginPageComponent }];
     MatFormFieldModule,
     MatIcon,
     MatButton,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [DemoService]
+  providers: [DemoService],
 })
 export class LoginPageModule {}

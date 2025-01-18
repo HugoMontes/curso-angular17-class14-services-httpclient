@@ -7,7 +7,7 @@
 //   private router = inject(Router);
 
 //   canActivate(
-//       route: ActivatedRouteSnapshot, 
+//       route: ActivatedRouteSnapshot,
 //       state: RouterStateSnapshot
 //     ): boolean {
 //       console.log('***AuthGuard***');
@@ -21,17 +21,17 @@
 //   }
 // }
 
-import { inject } from "@angular/core";
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 export const AuthGuardFn: CanActivateFn = (route, state) => {
-      console.log('***AuthGuardFn***');
-      console.log(route);
-      const token = localStorage.getItem('token');
-      if(!token){
-        const router = inject(Router);
-        router.navigateByUrl("/");
-        return false;
-      }
+  console.log('***AuthGuardFn***');
+  console.log(route);
+  const token = localStorage.getItem('token');
+  if (!token) {
+    const router = inject(Router);
+    router.navigateByUrl('/');
+    return false;
+  }
   return true;
 };

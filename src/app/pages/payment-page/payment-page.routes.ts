@@ -13,7 +13,10 @@ export default [
       },
       {
         path: 'full-product-details', // http://localhost:4200/payment/full-product-details
-        loadComponent: () => import('./full-product-details-page/full-product-details-page.component'),
+        loadComponent: () =>
+          import(
+            './full-product-details-page/full-product-details-page.component'
+          ),
       },
       {
         path: '', // http://localhost:4200/payment/simple-product-detail

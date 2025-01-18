@@ -12,7 +12,6 @@ import { CartService } from '../../../services/cart.service';
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
-	
   @Input({ required: true })
   product?: IApiResponseProduct;
   private readonly _cartService = inject(CartService);

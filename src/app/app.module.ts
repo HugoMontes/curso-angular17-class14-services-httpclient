@@ -38,7 +38,8 @@ import { DemoInterceptor } from './interceptors/demo.interceptor';
     RoutingModule,
   ],
   bootstrap: [AppComponent],
-  providers: [provideAnimationsAsync(), 
+  providers: [
+    provideAnimationsAsync(),
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: DemoInterceptor, multi: true },
   ],

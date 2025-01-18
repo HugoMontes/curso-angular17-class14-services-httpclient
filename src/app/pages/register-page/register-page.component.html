@@ -13,46 +13,51 @@
       <form class="form" [formGroup]="formGroup">
         <mat-form-field appearance="outline">
           <mat-label>Nombres</mat-label>
-          <input matInput type="text" formControlName="names"/>
-          @if (namesField.hasError('required')) {
+          <input matInput type="text" formControlName="names" />
+          @if (namesField.hasError("required")) {
             <mat-error>Ingrese sus nombres</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Apellidos</mat-label>
-          <input matInput type="text" formControlName="lastName"/>
-          @if (lastNameField.hasError('required')) {
+          <input matInput type="text" formControlName="lastName" />
+          @if (lastNameField.hasError("required")) {
             <mat-error>Ingrese su apellido</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input matInput type="email" formControlName="email"/>
+          <input matInput type="email" formControlName="email" />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" formControlName="password"/>
-          @if (passwordField.hasError('required')) {
+          <input matInput type="password" formControlName="password" />
+          @if (passwordField.hasError("required")) {
             <mat-error>Ingrese una contraseña</mat-error>
           }
-          @if (passwordField.hasError('customPasswordValidator')) {
+          @if (passwordField.hasError("customPasswordValidator")) {
             <mat-error>
-              La contraseña debe tener al menos una mayúscula, minúscula, simbolo, número y mayor a 8 caracteres
+              La contraseña debe tener al menos una mayúscula, minúscula,
+              simbolo, número y mayor a 8 caracteres
             </mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Repetir contraseña</mat-label>
-          <input matInput type="password" 
-                 formControlName="confirmPassword"
-                 [errorStateMatcher]="passwordStateMatcher"/>
-          @if(confirmPasswordField.hasError('required')){
+          <input
+            matInput
+            type="password"
+            formControlName="confirmPassword"
+            [errorStateMatcher]="passwordStateMatcher"
+          />
+          @if (confirmPasswordField.hasError("required")) {
             <mat-error> Ingrese una contraseña </mat-error>
-          } @if(formGroup.hasError('crossConfirmPasswordError')){
+          }
+          @if (formGroup.hasError("crossConfirmPasswordError")) {
             <mat-error> La contraseña no coincide, verifique </mat-error>
           }
         </mat-form-field>

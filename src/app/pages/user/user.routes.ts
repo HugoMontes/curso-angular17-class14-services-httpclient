@@ -3,8 +3,8 @@ import { UserBasicComponent } from './user-basic/user-basic.component';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 
 const isRole = (role: string) => {
-	const roleLogged = localStorage.getItem('role');
-	return roleLogged === role;
+  const roleLogged = localStorage.getItem('role');
+  return roleLogged === role;
 };
 
 // export default [
@@ -25,16 +25,15 @@ const isRole = (role: string) => {
 //     }
 // ] as Routes;
 
-
 export default [
-    {
-        path: '',
-        canMatch: [() => isRole('admin')],
-        component: UserAdminComponent
-    },
-    {
-        path: '',
-        canMatch: [() => isRole('basic')],
-        component: UserBasicComponent
-    },
+  {
+    path: '',
+    canMatch: [() => isRole('admin')],
+    component: UserAdminComponent,
+  },
+  {
+    path: '',
+    canMatch: [() => isRole('basic')],
+    component: UserBasicComponent,
+  },
 ] as Routes;

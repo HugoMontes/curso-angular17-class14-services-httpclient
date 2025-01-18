@@ -1,12 +1,12 @@
 export interface IDetailProduct {
-	product: IProduct;
-	count: number;
-	total: number;
+  product: IProduct;
+  count: number;
+  total: number;
 }
 
 export interface IProduct {
-	id: number;
-	title: string;
-	price: number;
-	image: string;
+  id: number;
+  title: string;
+  price: number;
+  image: string;
 }

@@ -17,7 +17,9 @@ import { inject } from '@angular/core';
 // 	}
 // }
 
-export const ProductsResolverServiceFn: ResolveFn<IApiResponseProduct[]> = (route: ActivatedRouteSnapshot) => {
+export const ProductsResolverServiceFn: ResolveFn<IApiResponseProduct[]> = (
+  route: ActivatedRouteSnapshot,
+) => {
   const _productsApiService = inject(ProductsApiService);
   return _productsApiService.getProducts();
 };

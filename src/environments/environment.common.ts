@@ -1,4 +1,4 @@
 export const commonEnvironment = {
-    domain: 'https://fakestoreapi.com',
-    titleApp: "PRODUCTION APP"
+  domain: 'https://fakestoreapi.com',
+  titleApp: 'PRODUCTION APP',
 };
