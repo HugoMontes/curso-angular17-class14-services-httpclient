@@ -3,7 +3,6 @@ import { Component, HostListener, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -12,15 +11,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { last, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   crossPasswordMatchingValidatior,
   customPasswordValidator,
   PasswordStateMatcher,
 } from './register-custom-validators';
 import { CanComponentDeactive } from '../../guards/exit.guard';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-register-page',
@@ -92,7 +89,7 @@ export default class RegisterPageComponent implements CanComponentDeactive {
 
   clickRegister(): void {
     // Acceder al valor de un control
-    const namesOld = this.formGroup.get('names')?.value;
+    // const namesOld = this.formGroup.get('names')?.value;
     const namesNew = this.formGroup.controls.names.value;
     console.log(namesNew);
 
@@ -131,9 +128,9 @@ export default class RegisterPageComponent implements CanComponentDeactive {
 
     //#endregion
 
-    if (this.formGroup.valid) {
-      const user = this.formGroup.getRawValue();
-    }
+    // if (this.formGroup.valid) {
+    //   const user = this.formGroup.getRawValue();
+    // }
 
     // console.log(this.formGroup.get('names')?.value as String);
     const name = this.formGroup.controls.names.value;

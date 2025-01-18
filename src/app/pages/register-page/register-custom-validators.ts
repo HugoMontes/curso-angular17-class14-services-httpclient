@@ -1,10 +1,4 @@
-import {
-  AbstractControl,
-  FormGroupDirective,
-  NgForm,
-  ValidationErrors,
-  ValidatorFn,
-} from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
 // Esta expresión regular validará si el texto contiene al menos una minuscula, mayuscula,
@@ -48,10 +42,7 @@ export const crossPasswordMatchingValidatior: ValidatorFn = (
 };
 
 export class PasswordStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: AbstractControl,
-    form: FormGroupDirective | NgForm,
-  ): boolean {
+  isErrorState(control: AbstractControl): boolean {
     if (!control || !control.parent) {
       return false;
     }

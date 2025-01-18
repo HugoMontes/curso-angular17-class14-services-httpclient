@@ -1,5 +1,5 @@
 import { ProductsApiService } from './../../services/products-api.service';
-import { Component, inject, Input, OnInit, Optional } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';

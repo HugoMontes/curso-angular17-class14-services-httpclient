@@ -1,1 +1,3 @@
-ng lint
+npm run format
+ng lint --fix
+

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { DemoService } from '../../services/demo.service';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { AuthApiService } from '../../services/api/auth-api.service';
 

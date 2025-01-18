@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
   intercept(
-    req: HttpRequest<any>,
+    req: HttpRequest<unknown>,
     next: HttpHandler,
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<unknown>> {
     // console.log("----API INTERCEPTOR-----");
     // console.log(req);
     if (req.url.includes('white_')) {
